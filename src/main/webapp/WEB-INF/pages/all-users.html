@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 0;
+            margin-bottom: 30px;
+        }
+        .user-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .user-item {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .create-button {
+            display: inline-block;
+            background-color: #0071e3;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-size: 17px;
+            line-height: 1.17648;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .create-button:hover {
+            background-color: #0077ed;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="user-list">
+    <h1>All Users</h1>
+    <div th:each="user : ${users}" class="user-item">
+        <a th:href="@{/{id}(id=${user.getId()})}" th:text="${user.getName() + ', ' + user.getLastName() + ', ' + user.getAge()}">user</a>
+    </div>
+    <a th:href="@{/create}" class="create-button">Create User</a>
+</div>
+</body>
+</html>
